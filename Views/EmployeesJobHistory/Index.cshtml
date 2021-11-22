@@ -1,0 +1,52 @@
+@model IEnumerable<CRUD.Models.EmployeeJobHistory>
+
+<h2>Employees History</h2>
+@* <a class="btn btn-primary" asp-controller="Employees" asp-action="EmployeeForm" role="button">Add</a> *@
+
+<div class="col-md-9">
+    <table id="MyDataTable" class="display">
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var history in Model)
+            {
+                <tr>
+                    <td>
+                        @history.PositionId
+                    </td>
+
+                    <td>
+                        @history.StartDate
+                    </td>
+
+                    <td>
+                        @history.EndDate
+                    </td>
+
+                    <td>
+                        <a asp-controller="EmployeesJobHistory" asp-action="Update" asp-route-Id="@history.EmployeeJobHistoryId"> Update</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" />
+
+@section Scripts{
+    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#MyDataTable').DataTable();
+        });
+    </script>
+}
+
+

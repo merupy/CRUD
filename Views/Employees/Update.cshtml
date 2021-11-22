@@ -1,0 +1,35 @@
+@model NewEmployeeViewModel
+
+<h1>Update Employee</h1>
+
+<form asp-controller="Employees" asp-action="Save" method="post">
+    <div class="mb-3">
+        <label asp-for="@Model.Employees.Person.FirstName" class="form-label"></label>
+        <input asp-for="@Model.Employees.Person.FirstName" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.Employees.Person.MiddleName" class="form-label"></label>
+        <input asp-for="@Model.Employees.Person.MiddleName" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.Employees.Person.LastName" class="form-label"></label>
+        <input asp-for="@Model.Employees.Person.LastName" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.Employees.Person.Email" class="form-label"></label>
+        <input asp-for="@Model.Employees.Person.Email" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.Employees.Person.Address" class="form-label"></label>
+        <input asp-for="@Model.Employees.Person.Address" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.Employees.Salary" class="form-label"></label>
+        <input asp-for="@Model.Employees.Salary" type="text" class="form-control">
+    </div>
+    @Html.HiddenFor(m=>m.Employees.EmployeeId)
+    @Html.HiddenFor(p=>p.Persons.PersonId)
+    <button type="submit" class="btn btn-primary" value="Update">
+        Submit
+    </button>
+</form>

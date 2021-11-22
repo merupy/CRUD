@@ -1,0 +1,52 @@
+@model NewEmployeeViewModel
+
+<h1>New Employee</h1>
+
+
+<form asp-controller="Employees" asp-action="Save" method="post">
+    <div class="mb-3">
+        <label asp-for="@Model.Persons.FirstName" class="form-label"></label>
+        <input asp-for="@Model.Persons.FirstName" type="text" class="form-control">
+        @Html.ValidationMessageFor(m=>m.Persons.FirstName)
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.Persons.MiddleName" class="form-label"></label>
+        <input asp-for="@Model.Persons.MiddleName" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.Persons.LastName" class="form-label"></label>
+        <input asp-for="@Model.Persons.LastName" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.Persons.Email" class="form-label"></label>
+        <input asp-for="@Model.Persons.Email" type="text" class="form-control">
+        @Html.ValidationMessageFor(m=>m.Persons.Email)
+    </div>
+    <div class="mb-3">
+        <label>Position:</label>
+        <select class="form-control" asp-for="@Model.Employees.PositionId"
+        asp-items="@(new SelectList(Model.Positions, "PositionId","PositionName"))">
+        <option>Choose Position</option>
+        </select>
+
+        @* @Html.DropDownList("Positions", new SelectList(Model.Positions,"PositionId","PositionName")) *@
+
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.Persons.Address" class="form-label"></label>
+        <input asp-for="@Model.Persons.Address" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.Employees.StartDate" class="form-label"></label>
+        <input asp-for="@Model.Employees.StartDate" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.Employees.EndDate" class="form-label"></label>
+        <input asp-for="@Model.Employees.EndDate" type="text" class="form-control">
+    </div>
+    @* @Html.HiddenFor(m=>m.Employees.EmployeeId)
+    @Html.HiddenFor(p=>p.Persons.PersonId) *@
+    <button type="submit" class="btn btn-primary" value="Submit">
+        Submit
+    </button>
+</form>
